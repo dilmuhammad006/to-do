@@ -24,6 +24,19 @@ export class ToDoService {
     if (!founded) {
       throw new NotFoundException('Content not found');
     }
+    await this.prisma.todo.update({ data: { completed: true }, where: { id } });
+    return {
+      message: 'success',
+    };
+  }
+
+  async delete(id: number) {
+    const founded = await this.prisma.todo.findFirst({ where: { id } });
+
+    if (!founded) {
+      throw new NotFoundException('Content not found');
+    }
+
     await this.prisma.todo.delete({ where: { id } });
     return {
       message: 'success',

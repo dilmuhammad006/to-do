@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseIntPipe,
@@ -26,5 +27,10 @@ export class ToDoController {
   @Post()
   async create(@Body() payload: Create) {
     return await this.service.create(payload);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id', ParseIntPipe) id: number) {
+    return await this.service.delete(id);
   }
 }
