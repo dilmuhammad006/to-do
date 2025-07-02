@@ -138,6 +138,8 @@ form.addEventListener("submit", async (e) => {
       }),
     });
 
+    console.log(response)
+
     form.reset();
     loadTasks();
   } catch (error) {

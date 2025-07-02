@@ -55,4 +55,16 @@ export class ToDoService {
       todo,
     };
   }
+
+  async getOne(id: number) {
+    const founded = await this.prisma.todo.findFirst({ where: { id } });
+
+    if (!founded) {
+      throw new NotFoundException('Content not found');
+    }
+
+    return {
+      founded,
+    };
+  }
 }

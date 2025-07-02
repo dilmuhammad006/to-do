@@ -33,4 +33,9 @@ export class ToDoController {
   async delete(@Param('id', ParseIntPipe) id: number) {
     return await this.service.delete(id);
   }
+
+  @Get(':id')
+  async getOne(@Param('id', ParseIntPipe) id: number) {
+    return await this.service.getOne(id);
+  }
 }
